@@ -16,8 +16,6 @@ namespace Ecommerce.Web
                 
             // Register HttpClient
             builder.Services.AddHttpClient();
-            builder.Services.AddScoped<HttpClient>(sp => 
-                new HttpClient { BaseAddress = new Uri("https://localhost:7205/") });
 
             var app = builder.Build();
 
