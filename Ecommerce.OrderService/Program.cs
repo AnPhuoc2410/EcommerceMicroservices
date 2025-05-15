@@ -1,4 +1,7 @@
 
+using Ecommerce.OrderService.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Ecommerce.OrderService
 {
     public class Program
@@ -13,6 +16,8 @@ namespace Ecommerce.OrderService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<OrderDbContext>(options =>
+                options.UseSqlServer("Data Source=.\\sqlexpress; Initial Catalog=EcommerceOrder; Integrated Security=True; TrustServerCertificate=True"));
 
             var app = builder.Build();
 

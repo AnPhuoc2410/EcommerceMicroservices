@@ -1,4 +1,6 @@
 using Ecommerce.Web.Components;
+using System.Net.Http;
+using System;
 
 namespace Ecommerce.Web
 {
@@ -11,6 +13,11 @@ namespace Ecommerce.Web
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+                
+            // Register HttpClient
+            builder.Services.AddHttpClient();
+            builder.Services.AddScoped<HttpClient>(sp => 
+                new HttpClient { BaseAddress = new Uri("https://localhost:7205/") });
 
             var app = builder.Build();
 

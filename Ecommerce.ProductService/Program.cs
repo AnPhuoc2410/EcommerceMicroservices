@@ -1,4 +1,7 @@
 
+using Ecommerce.ProductService.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Ecommerce.ProductService
 {
     public class Program
@@ -13,6 +16,9 @@ namespace Ecommerce.ProductService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ProductDbContext>(options =>
+                options.UseSqlServer("Data Source=.\\sqlexpress; Initial Catalog=EcommerceProduct; Integrated Security=True; TrustServerCertificate=True"));
 
             var app = builder.Build();
 
