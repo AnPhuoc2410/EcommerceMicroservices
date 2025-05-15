@@ -1,5 +1,6 @@
 
 using Ecommerce.OrderService.Data;
+using Ecommerce.OrderService.Kafka;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.OrderService
@@ -16,6 +17,10 @@ namespace Ecommerce.OrderService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Register Kafka producer
+            builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
+
             builder.Services.AddDbContext<OrderDbContext>(options =>
                 options.UseSqlServer("Data Source=.\\sqlexpress; Initial Catalog=EcommerceOrder; Integrated Security=True; TrustServerCertificate=True"));
 
